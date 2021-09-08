@@ -2,7 +2,7 @@
 
 @section('content')
     @include('header')
-    <h2>Products</h2>
+    <h2>{{ trans('strings.products') }}</h2>
     <section class="box">
         @forelse ($products as $product)
             <div class="product-box">
@@ -15,11 +15,11 @@
                 <form action="{{ route('add.cart') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <button type="submit">Add to cart</button>
+                    <button type="submit">{{ trans('strings.addToCart') }}</button>
                 </form>
             </div>
         @empty
-            <h3>There are no products!</h3>
+            <h3>{{ trans('strings.thereAreNoProducts') }}</h3>
         @endforelse
     </section>
 @stop
