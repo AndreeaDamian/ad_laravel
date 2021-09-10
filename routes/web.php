@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,9 @@ Route::post('/cart/remove', [ShopController::class, 'removeItem'])->name('cart.r
 Route::post('/checkout', [ShopController::class, 'checkout'])->name('checkout');
 
 Auth::routes();
-
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('products', ProductController::class);
+});
+

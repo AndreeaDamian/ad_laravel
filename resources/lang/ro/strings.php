@@ -29,8 +29,10 @@ return [
     'login'         => 'Logare',
     'logout'        => 'Delogare',
     'remove'        => 'Elimina',
-    'delete'        => 'Delete',
+    'delete'        => 'Sterge',
     'actions'       => 'Actiuni',
+    'addProduct'    => 'Adauga Produs',
+    'edit'          => 'Editeaza',
     '' => '',
 
 ];

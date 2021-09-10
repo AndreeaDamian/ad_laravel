@@ -3,6 +3,7 @@
         <li><a href="{{ route('home') }}">{{ trans('strings.home') }}</a></li>
         <li><a href="{{ route('cart') }}">{{ trans('strings.cart') }}</a></li>
         @if(Auth()->user())
+            <li><a href="{{ route('products.index') }}">{{ trans('strings.products') }}</a></li>
             <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

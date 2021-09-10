@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.public')
 
 @section('content')
     @include('header')
