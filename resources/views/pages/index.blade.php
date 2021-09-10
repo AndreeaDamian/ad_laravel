@@ -7,7 +7,7 @@
         @forelse ($products as $product)
             <div class="product-box">
                 <h1>{{ $product->title }}</h1>
-                <img src="{{ asset('images/placeholder.png') }}">
+                <img src="{{ $product->image_path ? asset($product->image_path) : asset('images/placeholder.png') }}">
                 <div>
                     <p>{{ $product->description }}</p>
                 </div>

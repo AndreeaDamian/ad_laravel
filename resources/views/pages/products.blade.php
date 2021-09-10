@@ -19,7 +19,7 @@
             @foreach ($products as $product)
                 <tr>
                     <td>{{ $product->title }}</td>
-                    <td><img src="{{ asset('images/placeholder.png') }}"></td>
+                    <td><img src="{{ $product->image_path ? asset($product->image_path) : asset('images/placeholder.png') }}"></td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>

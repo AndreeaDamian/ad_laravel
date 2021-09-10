@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.product');
     }
 
     /**
@@ -36,18 +36,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+           'title' => ['required'],
+           'description' => ['nullable'],
+           'price' => ['required'],
+       ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $image = time().'.'.$file->extension();
+            $file->move(public_path('uploads'), $image);
+            $request['image_path'] = 'uploads/'.$image;
+        }
+        Product::create($request->input());
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -58,7 +61,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('pages.product', compact('product'));
     }
 
     /**
@@ -70,7 +73,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request['id'] = $product->id;
+        $request->validate([
+            'id' => ['exists:products,id'],
+            'title' => ['required'],
+            'description' => ['nullable'],
+            'price' => ['required'],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg']
+       ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $image = time().'.'.$file->extension();
+            $file->move(public_path('uploads'), $image);
+            $request['image_path'] = 'uploads/'.$image;
+        }
+        $product->update($request->input());
+
+        return redirect()->back();
     }
 
     /**
