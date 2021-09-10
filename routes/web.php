@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,9 @@ Auth::routes();
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('products', ProductController::class);
+    Route::resources([
+        'products' => ProductController::class,
+        'orders' => OrderController::class,
+    ]);
 });
 

@@ -4,6 +4,7 @@
         <li><a href="{{ route('cart') }}">{{ trans('strings.cart') }}</a></li>
         @if(Auth()->user())
             <li><a href="{{ route('products.index') }}">{{ trans('strings.products') }}</a></li>
+            <li><a href="{{ route('orders.index') }}">{{ trans('strings.orders') }}</a></li>
             <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

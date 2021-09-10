@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Checkout;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -75,6 +77,14 @@ class ShopController
                 'comment' => $request->input('contact_details'),
                 'products' => $products
             ];
+
+            $order = Order::create($request->input());
+            foreach ($products as $product) {
+                OrderProduct::create([
+                    'order_id' => $order->id,
+                    'product_id' => $product->id,
+                 ]);
+            }
 
             Mail::to($to)->send(new Checkout($data));
             Session::forget('cart');

@@ -33,6 +33,11 @@ return [
     'actions'       => 'Actiuni',
     'addProduct'    => 'Adauga Produs',
     'edit'          => 'Editeaza',
+    'orders'        => 'Comenzi',
+    'nr'            => 'Nr.',
+    'total'         => 'Total',
+    'details'       => 'Detalii',
+    'date'          => 'Data',
     '' => '',
 
 ];
