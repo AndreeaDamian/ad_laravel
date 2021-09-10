@@ -40,6 +40,6 @@ return [
     'date'          => 'Data',
     'customerDetails' => 'Detalii Client',
     'purchasedProducts' => 'Produse comandate',
-    '' => '',
+    'shop'          => 'Magazin',
 
 ];

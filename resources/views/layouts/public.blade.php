@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <title>Shop @yield('title')</title>
+        <title>{{ trans('strings.shop') }} @yield('title')</title>
     </head>
     <body>
         @yield('content')
