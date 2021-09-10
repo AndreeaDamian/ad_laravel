@@ -32,7 +32,7 @@
         </table>
     </section>
     <br>
-    @if($products->count())
+    @if ($products->count())
         <section>
             @if ($errors->any())
                 <ul>
