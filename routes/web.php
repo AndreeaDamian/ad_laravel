@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ShopController::class, 'index'])->name('home');
 Route::post('/cart', [ShopController::class, 'addToCart'])->name('add.cart');
 Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
+Route::post('/cart/remove', [ShopController::class, 'removeItem'])->name('cart.remove');
 Route::post('/checkout', [ShopController::class, 'checkout'])->name('checkout');
+
+Auth::routes();
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');

@@ -25,13 +25,13 @@ class ShopController
         $request->validate([
             'product_id' => ['required', 'exists:products,id']
         ]);
-        $productID = $request->input('product_id');
+        $productId = $request->input('product_id');
 
         if (!$request->session()->has('cart')) {
-            Session::push('cart', $productID);
+            Session::push('cart', $productId);
         } else {
-            if (!in_array($productID, Session::get('cart'))) {
-                Session::push('cart', $productID);
+            if (!in_array($productId, Session::get('cart'))) {
+                Session::push('cart', $productId);
             }
         }
 
@@ -44,6 +44,14 @@ class ShopController
         $products = Product::whereIn('id', $cartIds)->get();
 
         return view('pages.cart', compact('products'));
+    }
+
+    public function removeItem(Request $request)
+    {
+        $key = array_search($request->input('product_id'), Session::get('cart'));
+        Session::forget('cart.'.$key);
+
+        return redirect()->back();
     }
 
     public function checkout(Request $request)
