@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title') - {{ trans('strings.cart') }} @stop
+@section('title') - {{ trans('strings.products') }} @stop
 
 @section('content')
     @include('header')
