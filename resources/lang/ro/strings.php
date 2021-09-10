@@ -38,6 +38,8 @@ return [
     'total'         => 'Total',
     'details'       => 'Detalii',
     'date'          => 'Data',
+    'customerDetails' => 'Detalii Client',
+    'purchasedProducts' => 'Produse comandate',
     '' => '',
 
 ];
