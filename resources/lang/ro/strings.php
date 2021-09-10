@@ -23,6 +23,14 @@ return [
     'name'          => 'Nume',
     'orderDate'     => 'Data comanda',
     'successCart'   => 'Success Cart',
+    'incorrectEmailOrPass' => 'Parola sau email incorecta!',
+    'password'      => 'Parola',
+    'email'         => 'Email',
+    'login'         => 'Logare',
+    'logout'        => 'Delogare',
+    'remove'        => 'Elimina',
+    'delete'        => 'Delete',
+    'actions'       => 'Actiuni',
     '' => '',
 
 ];

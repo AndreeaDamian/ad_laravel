@@ -1,0 +1,101 @@
+.menu {
+    list-style-type: none;
+    display: flex;
+    padding: 15px;
+    color: black;
+}
+
+li, a {
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    column-width: 100px;
+    column-count: 4;
+    column-gap: 40px;
+}
+
+.product-box {
+    width: 320px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0;
+}
+
+.product-box img {
+    height: 100px;
+    display: flex;
+}
+
+.product-box button {
+    float: left;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+table {
+    border: solid 2px black;
+    border-collapse: collapse;
+    display: table;
+    width: 100%;
+}
+
+td, th {
+    border: solid 1px black;
+    padding: 10px;
+}
+
+img {
+    height: 100px;
+    display: flex;
+}
+
+.checkout-form {
+    height: 200px;
+    width: 30%;
+    border: solid 1px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.checkout-form div {
+    align-items: center;
+    padding: 20px;
+}
+
+.checkout-form label {
+    width: 20%;
+}
+
+input, textarea {
+    width: 75%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+label {
+    width: 25%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.btn-send {
+    padding: 5px;
+    margin-right: 50px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align:center;
+    border: none;
+}
+
