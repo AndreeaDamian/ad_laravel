@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -32,4 +33,19 @@ Route::middleware('auth')->group(function () {
         'orders' => OrderController::class,
     ]);
 });
+
+Route::get('/spa', function (){
+    return view('spa.index');
+});
+Route::prefix('ajax')->group(function () {
+    Route::get('/index', [AjaxController::class, 'index']);
+    Route::post('/cart', [AjaxController::class, 'addToCart']);
+    Route::get('/cart', [AjaxController::class, 'cart']);
+    Route::post('/cart/remove', [AjaxController::class, 'removeItem']);
+    Route::post('/checkout', [AjaxController::class, 'checkout']);
+});
+
+
+
+
 

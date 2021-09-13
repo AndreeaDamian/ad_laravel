@@ -41,5 +41,7 @@ return [
     'customerDetails' => 'Detalii Client',
     'purchasedProducts' => 'Produse comandate',
     'shop'          => 'Magazin',
+    'cartMustHave'  => 'Cart must have items!',
+    'checkout'      => 'Checkout',
 
 ];
