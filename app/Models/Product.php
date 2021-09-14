@@ -20,4 +20,12 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Models\Order');
     }
+
+    public static function getProducts($cartIds = null)
+    {
+        return self::when($cartIds != null, function ($query) use($cartIds) {
+            $query->whereNotIn('id', $cartIds);
+        })
+            ->get();
+    }
 }

@@ -12,9 +12,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::all();
+        if($request->ajax()) {
+            return response()->json($products);
+        }
         return view('pages.products', compact('products'));
     }
 
@@ -49,7 +52,6 @@ class ProductController extends Controller
             $request['image_path'] = 'uploads/'.$image;
         }
         Product::create($request->input());
-
         return redirect()->route('products.index');
     }
 

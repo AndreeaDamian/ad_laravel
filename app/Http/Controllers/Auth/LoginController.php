@@ -52,8 +52,15 @@ class LoginController extends Controller
         $error = trans('strings.incorrectEmailOrPass');
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            if($request->ajax()) {
+                return response(Auth()->user(), 200);
+            }
             return redirect($this->redirectTo);
+
         } else {
+            if($request->ajax()) {
+                return response()->json(['message' => $error], 422);
+            }
             return redirect('/login')->withErrors(['error' => $error]);
         }
     }

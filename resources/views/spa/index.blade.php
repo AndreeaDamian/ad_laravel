@@ -10,12 +10,19 @@
 </head>
 <body>
     <div class="menu">
-        <a href="#index">Home</a>
-        <a href="#cart">Cart</a>
+        <a href="#index">{{ trans('strings.home') }}</a>
+        <a href="#cart">{{ trans('strings.cart') }}</a>
+        <a href="#products" class="orders-link">{{ trans('strings.products') }}</a>
+        <a href="#orders" class="orders-link">{{ trans('strings.orders') }}</a>
+        <a href="#login" class="login-link">{{ trans('strings.login') }}</a>
+        <form class="logout-link">
+            <button type="submit">{{ trans('strings.logout') }}</button>
+        </form>
     </div>
     <div class="page index">
         <table class="list"></table>
     </div>
+
     <div class="page cart">
         <table class="list"></table>
         <br>
@@ -35,6 +42,21 @@
                 <textarea class="checkout-comment"  name="comment"></textarea>
             </div>
             <button class="btn-send" type="submit">{{ trans('strings.checkout') }}</button>
+        </form>
+    </div>
+
+    <div class="page login">
+        <div class="login-error" style="display: none;"></div>
+        <form id="login-form" class="checkout-form" style="height: auto">
+            <div>
+                <label>{{ trans('strings.email') }}</label>
+                <input type="text" class="login-email" name="email" value="">
+            </div>
+            <div>
+                <label>{{ trans('strings.password') }}</label>
+                <input type="password" class="login-pass" name="password" value="">
+            </div>
+            <button class="btn-send" type="submit">{{ trans('strings.login') }}</button>
         </form>
     </div>
 

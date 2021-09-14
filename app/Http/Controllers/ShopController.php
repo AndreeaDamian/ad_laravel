@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Session;
 
 class ShopController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $cartIds = Session::get('cart');
-        $products = Product::when($cartIds != null, function ($query) use($cartIds) {
-            $query->whereNotIn('id', $cartIds);
-        })
-            ->get();
+        $products = Product::getProducts(Session::get('cart'));
+
+        if ($request->ajax()) {
+            return response()->json($products, 200);
+        }
         return view('pages.index', compact('products'));
     }
 
@@ -37,14 +37,21 @@ class ShopController
             }
         }
 
+        if ($request->ajax()) {
+            $products = Product::getProducts(Session::get('cart'));
+            return response()->json($products, 200);
+        }
         return redirect()->back();
     }
 
-    public function cart()
+    public function cart(Request $request)
     {
         $cartIds = Session::get('cart') != null ? Session::get('cart') : [];
         $products = Product::whereIn('id', $cartIds)->get();
 
+        if ($request->ajax()) {
+            return response()->json($products, 200);
+        }
         return view('pages.cart', compact('products'));
     }
 
@@ -53,6 +60,11 @@ class ShopController
         $key = array_search($request->input('product_id'), Session::get('cart'));
         Session::forget('cart.'.$key);
 
+        if ($request->ajax()) {
+            $cartIds = Session::get('cart') != null ? Session::get('cart') : [];
+            $products = Product::whereIn('id', $cartIds)->get();
+            return response()->json($products, 200);
+        }
         return redirect()->back();
     }
 
@@ -64,6 +76,9 @@ class ShopController
         ]);
 
         if (!$request->session()->has('cart')) {
+            if($request->ajax()) {
+                return response()->json(['message' => trans('cartMustHave')], 422);
+            }
             return redirect()->back()->with('error', 'Cart must have items!');
         } else {
             $cartIds = Session::get('cart');
@@ -89,6 +104,9 @@ class ShopController
             Mail::to($to)->send(new Checkout($data));
             Session::forget('cart');
 
+            if ($request->ajax()) {
+                return response()->json([], 201);
+            }
             return redirect()->back()->with('message', 'Success!');
         }
     }
