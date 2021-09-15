@@ -52,6 +52,9 @@ class ProductController extends Controller
             $request['image_path'] = 'uploads/'.$image;
         }
         Product::create($request->input());
+        if ($request->ajax()) {
+            return response()->json('Created', 201);
+        }
         return redirect()->route('products.index');
     }
 
@@ -61,8 +64,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Request $request, Product $product)
     {
+        if ($request->ajax()) {
+            return response()->json($product, 200);
+        }
         return view('pages.product', compact('product'));
     }
 
@@ -92,6 +98,9 @@ class ProductController extends Controller
         }
         $product->update($request->input());
 
+        if ($request->ajax()) {
+            return response()->json('Success', 200);
+        }
         return redirect()->back();
     }
 
@@ -101,9 +110,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
         $product->delete();
+        if($request->ajax()) {
+            $products = Product::all();
+            return response()->json($products, 200);
+        }
         return redirect()->back();
     }
 }
