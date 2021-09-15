@@ -60,6 +60,44 @@
         </form>
     </div>
 
+    <div class="page products">
+        <a href="#product">Add Product</a>
+        <table class="products-list">
+        </table>
+    </div>
+
+    <div class="page product">
+        <div class="product-error" style="display: none;"></div>
+        <form class="checkout-form" enctype="multipart/form-data" style="height: auto">
+            <input type="hidden" class="product_id" name="product_id" value="">
+            <input type="hidden" class="method" name="_method" value="">
+            <div>
+                <label>{{ trans('strings.title') }}</label>
+                <input type="text" class="product_name" name="title" value="">
+            </div>
+            <div>
+                <label>{{ trans('strings.description') }}</label>
+                <textarea rows="7" class="product_description" name="description"></textarea>
+            </div>
+            <div>
+                <label>{{ trans('strings.price') }}</label>
+                <input type="text" class="product_price" name="price" value="">
+            </div>
+            <div>
+                <img src="#" class="product_image" alt="Product Image">
+                <input type="file" name="image" accept="image/*" id="fileToUpload">
+            </div>
+            <div>
+                <button class="btn-send product" type="submit"></button>
+            </div>
+        </form>
+    </div>
+
+    <div class="page orders">
+        <table class="orders-list">
+        </table>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/spa.js') }}"></script>
 </body>

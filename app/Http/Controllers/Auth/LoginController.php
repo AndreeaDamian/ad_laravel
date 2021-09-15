@@ -64,4 +64,13 @@ class LoginController extends Controller
             return redirect('/login')->withErrors(['error' => $error]);
         }
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        if ($request->ajax()) {
+            return response()->json('Logged out', 200);
+        }
+        return redirect('/');
+    }
 }
