@@ -36,7 +36,7 @@
                 <input type="file" name="image" accept="image/*" id="fileToUpload">
             </div>
             <div>
-                <button class="btn-send" type="submit"><?= isset($product) ? trans('strings.edit') : trans('strings.addProduct') ?></button>
+                <button class="btn-send" type="submit">{{ isset($product) ? trans('strings.edit') : trans('strings.addProduct') }}</button>
             </div>
         </form>
     </section>
