@@ -31,6 +31,7 @@ $(document).ready(function () {
                     success: function (response) {
                         page['name'] = 'cart';
                         page['form-method'] = 'remove'
+                        page['form-name'] = 'Remove'
                         $('.cart .list').html(renderList(response, page));
                     }
                 });
@@ -112,6 +113,7 @@ $(document).ready(function () {
                 $('.index').show();
                 page['name'] = 'index';
                 page['form-method'] = 'addToCart'
+                page['form-name'] = 'Add to Cart'
                 $.ajax('/', {
                     dataType: 'json',
                     success: function (response) {
@@ -144,7 +146,7 @@ $(document).ready(function () {
                         <td>${product.price}</td>`;
 
             html += `<td><form class="${page['form-method']}" data-id="${product.id}">
-                                <button type="submit">${page['form-method']}</button>
+                                <button type="submit">${page['form-name']}</button>
                             </form>
                         </td>`;
             html += `</tr>`;
@@ -200,7 +202,8 @@ $(document).ready(function () {
             success: function (response) {
                 var page = [];
                 page['name'] = 'index';
-                page['form-method'] = 'addToCart'
+                page['form-method'] = 'addToCart';
+                page['form-name'] = 'Add to Cart';
                 $('.index .list').html(renderList(response, page));
             }
         });
@@ -215,7 +218,8 @@ $(document).ready(function () {
             success: function (response) {
                 var page = [];
                 page['name'] = 'cart';
-                page['form-method'] = 'remove'
+                page['form-method'] = 'remove';
+                page['form-name'] = 'Remove';
                 $('.cart .list').html(renderList(response, page));
             }
         });
