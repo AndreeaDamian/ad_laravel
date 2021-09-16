@@ -12,9 +12,16 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::orderBy('id', 'ASC')->get();
+        $orders = Order::orderBy('id', 'DESC')->get();
+
+        if ($request->ajax()) {
+            foreach ($orders as $order) {
+                $order['total'] = $order->products->sum('price');
+            }
+            return response()->json($orders, 200);
+        }
         return view('pages.orders', compact('orders'));
     }
 
@@ -24,8 +31,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Request $request, Order $order)
     {
+        if ($request->ajax()) {
+            $order['products'] = $order->products;
+            return response()->json($order, 200);
+        }
         return view('pages.order', compact('order'));
     }
 }
