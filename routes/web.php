@@ -37,6 +37,9 @@ Route::get('/spa', function (){
     return view('spa.index');
 });
 
+Route::get('{any}', function () {
+    return view('spa.index-vue');
+})->where('any', '.*');
 
 
 
