@@ -30,6 +30,8 @@ Vue.prototype.axios = axios;
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('index-component', require('./components/IndexComponent.vue').default);
 Vue.component('cart-component', require('./components/CartComponent.vue').default);
+Vue.component('products-component', require('./components/ProductsComponent.vue').default);
+Vue.component('product-component', require('./components/ProductComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
