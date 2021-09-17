@@ -6,8 +6,8 @@
                     <router-link to="/vue" class="nav-item nav-link">Home</router-link>
                     <router-link to="/vue/cart" class="nav-item nav-link">Cart</router-link>
                     <router-link v-if="logged" to="/vue/products" class="nav-item nav-link">Products</router-link>
-                    <router-link v-if="logged" to="/vue/products" class="nav-item nav-link">Orders</router-link>
-                    <router-link v-if="logged == false" to="/vue/products" class="nav-item nav-link">Login</router-link>
+                    <router-link v-if="logged" to="/vue/orders" class="nav-item nav-link">Orders</router-link>
+                    <router-link v-if="!logged" to="/vue/products" class="nav-item nav-link">Login</router-link>
                     <form v-if="logged" @submit.prevent="logout">
                         <button type="submit">Logout</button>
                     </form>
@@ -27,7 +27,7 @@
                logged: false
            }
         },
-        mounted() {
+        created() {
            if (sessionStorage.getItem('logged')) {
                this.logged = true;
            }

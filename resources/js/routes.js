@@ -4,6 +4,8 @@ import LoginComponent from "./components/LoginComponent.vue";
 import ProductsComponent from "./components/ProductsComponent.vue";
 import ProductComponent from "./components/ProductComponent.vue";
 import AddProductComponent from "./components/AddProductComponent.vue";
+import OrdersComponent from "./components/OrdersComponent.vue";
+import OrderComponent from "./components/OrderComponent.vue";
 
 export const routes = [
     {
@@ -35,5 +37,15 @@ export const routes = [
         name: 'vue.product.create',
         path: '/vue/product',
         component: AddProductComponent
+    },
+    {
+        name: 'vue.orders',
+        path: '/vue/orders',
+        component: OrdersComponent
+    },
+    {
+        name: 'vue.order',
+        path: '/vue/order/:id',
+        component: OrderComponent
     },
 ]
