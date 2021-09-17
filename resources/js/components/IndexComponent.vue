@@ -42,8 +42,7 @@
                 this.axios
                     .post(`http://localhost:8000/cart`, {product_id:id})
                     .then(response => {
-                        let i = this.products.map(item => item.id).indexOf(id);
-                        this.products.splice(i, 1)
+                        this.products = response.data;
                     });
             }
         }
